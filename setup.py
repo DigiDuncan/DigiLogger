@@ -8,14 +8,14 @@ with open("requirements.txt") as f:
     requirements = f.read().splitlines()
 
 setuptools.setup(
-    name="SizeBot",
-    version="3.5.0",
+    name="DigiLogger",
+    version="1.0.0",
     author="DigiDuncan",
     author_email="digiduncan@gmail.com",
-    description="SizeBot3, Cogs Edition, rewritten.",
+    description="DigiLogger",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/sizedev/SizeBot3AndAHalf",
+    url="https://github.com/DigiDuncan/DigiLogger",
     python_requires=">=3.7",
     install_requires=requirements,
     packages=setuptools.find_packages(),

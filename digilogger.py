@@ -1,5 +1,6 @@
-import utils
-digiformatter as df
+from itertools import zip_longest
+
+import digiformatter as df
 
 logChannel = None
 
@@ -32,7 +33,7 @@ async def log(level, msg):
     discordSuffix = "\n```"
     if logChannel is not None:
         msgMaxLen = 2000 - len(discordPrefix) - len(discordSuffix)
-        for msgPart in utils.chunkStr(msgMaxLen, msg):
+        for msgPart in chunkStr(msgMaxLen, msg):
             discordMessage = discordPrefix + msgPart + discordSuffix
             await logChannel.send(discordMessage)
 
@@ -66,3 +67,9 @@ def synclog(level, msg):
 def init(channel):
     global logChannel
     logChannel = channel
+
+
+# grouper(3, "ABCDEFG", "x") --> ABC DEF Gxx
+def chunkStr(n, s, fillvalue=""):
+    args = [iter(s)] * n
+    return ("".join(chunk) for chunk in zip_longest(*args, fillvalue=fillvalue))
